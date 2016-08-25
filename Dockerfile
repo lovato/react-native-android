@@ -12,7 +12,7 @@ RUN apt-get update && \
     automake \
     python-dev \
     python-setuptools \
-    supervisor
+    supervisor \
     unzip -y && \
     apt-get clean
 
