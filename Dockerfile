@@ -121,9 +121,9 @@ RUN npm install
 ENV PATH node_modules/.bin:$PATH
 
 # Run it
-cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
-echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
-echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
+#cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
+#echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
+#echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
 watchman shutdown-server && \
 npm start
 
