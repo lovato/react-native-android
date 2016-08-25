@@ -8,9 +8,13 @@ RUN apt-get update && \
     wget \
     curl \
     git \
+    build-essential \
+    automake \
+    python-dev \
+    python-setuptools \
+    supervisor
     unzip -y && \
     apt-get clean
-
 
 # ——————————
 # Install Java.
