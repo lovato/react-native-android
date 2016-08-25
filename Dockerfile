@@ -1,7 +1,3 @@
-# understand and merge:
-# https://hub.docker.com/r/r1cebank/react-native-boilerplate/~/dockerfile/
-# https://hub.docker.com/r/dspfac/base-react-native/~/dockerfile/
-
 # Pull base image.
 FROM ubuntu:14.04
 
