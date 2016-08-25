@@ -45,17 +45,6 @@ RUN dpkg --add-architecture i386 && \
     apt-get clean
 
 # ——————————
-# Installs FB Watchman
-# ——————————
-
-RUN git clone -b v3.8.0 https://github.com/facebook/watchman.git /tmp/watchman
-WORKDIR /tmp/watchman
-RUN ./autogen.sh
-RUN ./configure
-RUN make
-RUN make install
-
-# ——————————
 # Installs Android SDK
 # ——————————
 
@@ -105,6 +94,16 @@ RUN cd && \
     rm node-v${NODE_VERSION}-linux-x64.tar.gz
 ENV PATH ${PATH}:/opt/node/bin
 
+# ——————————
+# Installs FB Watchman
+# ——————————
+
+#RUN git clone -b v3.8.0 https://github.com/facebook/watchman.git /tmp/watchman
+#WORKDIR /tmp/watchman
+#RUN ./autogen.sh
+#RUN ./configure
+#RUN make
+#RUN make install
 
 # ——————————
 # Install Basic React-Native packages
@@ -124,7 +123,7 @@ ENV PATH node_modules/.bin:$PATH
 #cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
 #echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
 #echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
-watchman shutdown-server && \
+#watchman shutdown-server && \
 npm start
 
 # Expose ports
