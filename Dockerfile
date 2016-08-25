@@ -48,12 +48,12 @@ RUN dpkg --add-architecture i386 && \
 # Installs FB Watchman
 # ——————————
 
-#RUN git clone -b v3.8.0 https://github.com/facebook/watchman.git /tmp/watchman
-#WORKDIR /tmp/watchman
-#RUN ./autogen.sh
-#RUN ./configure
-#RUN make
-#RUN make install
+RUN git clone -b v3.8.0 https://github.com/facebook/watchman.git /tmp/watchman
+WORKDIR /tmp/watchman
+RUN ./autogen.sh
+RUN ./configure
+RUN make
+RUN make install
 
 # ——————————
 # Installs Android SDK
@@ -114,9 +114,20 @@ RUN npm install rnpm -g
 
 ENV LANG en_US.UTF-8
 
+# copy all the files into /app
+COPY . /app
+WORKDIR /app
+RUN npm install
+ENV PATH node_modules/.bin:$PATH
+
 # Run it
-#cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
-#echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
-#echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
-#watchman shutdown-server && \
-#npm start
+cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
+echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
+echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
+watchman shutdown-server && \
+npm start
+
+# Expose ports
+EXPOSE 8080
+EXPOSE 8082
+EXPOSE 8081
