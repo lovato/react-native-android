@@ -98,12 +98,12 @@ ENV PATH ${PATH}:/opt/node/bin
 # Installs FB Watchman
 # ——————————
 
-#RUN git clone -b v3.8.0 https://github.com/facebook/watchman.git /tmp/watchman
-#WORKDIR /tmp/watchman
-#RUN ./autogen.sh
-#RUN ./configure
-#RUN make
-#RUN make install
+RUN git clone -b v3.8.0 https://github.com/facebook/watchman.git /tmp/watchman
+WORKDIR /tmp/watchman
+RUN ./autogen.sh
+RUN ./configure
+RUN make
+RUN make install
 
 # ——————————
 # Install Basic React-Native packages
