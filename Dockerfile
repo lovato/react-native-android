@@ -114,17 +114,17 @@ RUN npm install rnpm -g
 ENV LANG en_US.UTF-8
 
 # copy all the files into /app
-COPY . /app
-WORKDIR /app
-RUN npm install
-ENV PATH node_modules/.bin:$PATH
+#COPY . /app
+#WORKDIR /app
+#RUN npm install
+#ENV PATH node_modules/.bin:$PATH
 
 # Run it
-RUN cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
-    echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
-    echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
-    watchman shutdown-server && \
-    npm start
+#RUN cmd echo 999999 | tee -a /proc/sys/fs/inotify/max_user_watches && \
+#    echo 999999 | tee -a /proc/sys/fs/inotify/max_queued_events && \
+#    echo 999999 | tee -a /proc/sys/fs/inotify/max_user_instances && \
+#    watchman shutdown-server && \
+#    npm start
 
 # Expose ports
 EXPOSE 8080
